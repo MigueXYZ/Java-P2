@@ -8,7 +8,7 @@ public enum DiaSemana {
         QUINTA_FEIRA("5ª Feira"),
         SEXTA_FEIRA("6ª Feira"),
         SABADO("Sábado");
-        private String descricao;
+        private final String descricao;
         DiaSemana(String descricao){
             this.descricao=descricao;
         }

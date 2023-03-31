@@ -2,10 +2,10 @@ package modelo;
 
 import java.util.LinkedList;
 public class Aula extends Identificador{
-    private StringBuilder sumario;
+    private final StringBuilder sumario;
     private Professor professor;
-    private LinkedList<Aluno> alunos;
-    private Horario horario;
+    private final LinkedList<Aluno> alunos;
+    private final Horario horario;
 
     public Aula(String nome, long numero,Horario horario){
         this(nome,numero,horario,null,new LinkedList<>());
@@ -24,7 +24,7 @@ public class Aula extends Identificador{
         if(horario!=null){
             this.horario=new Horario(horario.getDiaSemana(), horario.getHoraInicio(), horario.getDuracao());
         }else{
-            this.horario=new Horario(DiaSemana.DOMINGO,00,00);
+            this.horario=new Horario(DiaSemana.DOMINGO,0,0);
         }
     }
     public void adicionarLinhaSumario(String linha){
@@ -65,13 +65,12 @@ public class Aula extends Identificador{
     }
 
     public void adicionar(Aluno aluno){
-        if(aluno!=null && alunos!=null){
             if(aluno==null||alunos.contains(aluno)){
                 return;
             }
             alunos.add(aluno);
             aluno.adicionar(this);
-        }
+
     }
 
     public String getSumario(){

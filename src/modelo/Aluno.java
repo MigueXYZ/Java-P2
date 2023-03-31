@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 public class Aluno extends Identificador{
-    private LinkedList<Aula> aulas;
+    private final LinkedList<Aula> aulas;
 
     public Aluno(String nome, long numero){
         super(nome, numero);

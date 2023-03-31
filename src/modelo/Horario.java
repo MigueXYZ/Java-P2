@@ -1,9 +1,9 @@
 package modelo;
 
 public class Horario {
-    private DiaSemana diaSemana;
-    private long horaInicio;
-    private long duracao;
+    private final DiaSemana diaSemana;
+    private final long horaInicio;
+    private final long duracao;
 
     public Horario(DiaSemana diaSemana,long horaInicio,long duracao){
         this.diaSemana=diaSemana;

@@ -3,7 +3,7 @@ package modelo;
 
 import java.util.LinkedList;
 public class Professor extends Identificador {
-    private LinkedList<Aula> aulas;
+    private final LinkedList<Aula> aulas;
 
     public Professor(String nome, long numero){
         super(nome,numero);
@@ -60,14 +60,22 @@ public class Professor extends Identificador {
     public LinkedList<Aula> getAulas(Horario horario){
         LinkedList<Aula> aulasADevolver=new LinkedList<>();
         Horario aux;
+        long inicAula;
+        long fimAula;
+        long inicHor;
+        long fimHor;
         for (Aula aula : aulas) {
             //percorrer cada aula deste prof
             //se o horario intersetar
             //adiciona
             if(horario!=null){
+                fimHor=horario.getHoraInicio()+horario.getDuracao();
+                inicHor=horario.getHoraInicio();
                 aux=aula.getHorario();
+                fimAula=aux.getHoraInicio()+aux.getDuracao();
+                inicAula=aux.getHoraInicio();
                 if(aux.getDiaSemana()==horario.getDiaSemana()){
-                    if( ( ( aux.getHoraInicio()+aux.getDuracao() )>=horario.getHoraInicio() ) || ( ( horario.getHoraInicio()+horario.getDuracao() )<= aux.getHoraInicio() ) ){
+                    if(!(fimHor < inicAula || fimAula < inicHor)){
                         aulasADevolver.add(aula);
                     }
                 }
