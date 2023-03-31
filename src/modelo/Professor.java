@@ -72,9 +72,9 @@ public class Professor extends Identificador {
                 fimHor=horario.getHoraInicio()+horario.getDuracao();
                 inicHor=horario.getHoraInicio();
                 aux=aula.getHorario();
-                fimAula=aux.getHoraInicio()+aux.getDuracao();
-                inicAula=aux.getHoraInicio();
                 if(aux.getDiaSemana()==horario.getDiaSemana()){
+                    fimAula=aux.getHoraInicio()+aux.getDuracao();
+                    inicAula=aux.getHoraInicio();
                     if(!(fimHor < inicAula || fimAula < inicHor)){
                         aulasADevolver.add(aula);
                     }
