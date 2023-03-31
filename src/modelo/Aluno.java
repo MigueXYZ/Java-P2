@@ -1,5 +1,6 @@
 package modelo;
 
+
 import java.util.LinkedList;
 public class Aluno extends Identificador{
     private final LinkedList<Aula> aulas;
@@ -48,14 +49,22 @@ public class Aluno extends Identificador{
     public LinkedList<Aula> getAulas(Horario horario){
         LinkedList<Aula> aulasADevolver=new LinkedList<>();
         Horario aux;
+        long inicAula;
+        long fimAula;
+        long inicHor;
+        long fimHor;
         for (Aula aula : aulas) {
             //percorrer cada aula deste prof
             //se o horario intersetar
             //adiciona
             if(horario!=null){
+                fimHor=horario.getHoraInicio()+horario.getDuracao();
+                inicHor=horario.getHoraInicio();
                 aux=aula.getHorario();
                 if(aux.getDiaSemana()==horario.getDiaSemana()){
-                    if( ( ( aux.getHoraInicio()+aux.getDuracao() )>=horario.getHoraInicio() ) || ( ( horario.getHoraInicio()+horario.getDuracao() )<= aux.getHoraInicio() ) ){
+                    fimAula=aux.getHoraInicio()+aux.getDuracao();
+                    inicAula=aux.getHoraInicio();
+                    if(!(fimHor < inicAula || fimAula < inicHor)){
                         aulasADevolver.add(aula);
                     }
                 }
