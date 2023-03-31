@@ -15,6 +15,7 @@ public class Main {
         System.out.println(identificador1.getNome());
         System.out.println(identificador2.getNome());
 
+
         professor1.adicionar(aula1);
         aluno1.adicionar(aula1);
     }
