@@ -32,11 +32,15 @@ public class GabineteProfessor {
     }
     public void adicionar(Professor professor) {
         if (professor != null && this.professores != null) {
-            if (professor == null || this.professores.contains(professor)) {
+            if (this.professores.contains(professor)) {
                 return;
             }
             this.professores.add(professor);
-            professor.adicionarGabinete(this);
+            professor.setGabinete(this);
         }
+    }
+
+    public void desassociar(Professor professor) {
+        this.professores.remove(professor);
     }
 }
