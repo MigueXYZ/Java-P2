@@ -7,6 +7,10 @@ public class GabineteProfessor {
     private LinkedList<Professor> professores;
     private Boolean portaAberta;
 
+    GabineteProfessor(String nome,Boolean portaAberta){
+        this.nome=nome;
+        this.portaAberta=portaAberta;
+    }
     public String getNome(){
         return this.nome;
     }
@@ -22,6 +26,7 @@ public class GabineteProfessor {
     public void fechar(){
         this.portaAberta=false;
     }
+
     public void remover(Professor professor) {
         if (this.professores != null && professor != null) {
             if (!this.professores.remove(professor)) {

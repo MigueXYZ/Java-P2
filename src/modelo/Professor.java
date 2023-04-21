@@ -72,16 +72,11 @@ public class Professor extends Pessoa {
 
     public void removerHorario(Horario horario){
         if (this.horariosAtendimento != null && horario != null) {
-            if (!this.horariosAtendimento.remove(horario)) {
-                return;
-            }
-        }
-    }
-    public void adicionarHorario(Horario horario){
-        if (this.horariosAtendimento != null && horario != null) {
-            if (!this.horariosAtendimento.remove(horario)) {
-                return;
-            }
+                for (Horario hora:this.horariosAtendimento){
+                    if(hora.interseta(horario)){
+                        horariosAtendimento.remove(hora);
+                    }
+                }
         }
     }
 
