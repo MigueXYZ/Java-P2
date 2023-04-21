@@ -76,7 +76,7 @@ public class Seguranca {
     }
 
     public void remover(Horario horario){
-        if (this.horariosAtendimento != null && horario != null) {
+        if (this.horarioAtendimento != null && horario != null) {
             for (Horario hora:this.horarioAtendimento){
                 if(hora.interseta(horario)){
                     horarioAtendimento.remove(hora);
