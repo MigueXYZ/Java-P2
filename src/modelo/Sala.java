@@ -16,6 +16,7 @@ public class Sala {
         return(this.nome);
     }
 
+
     public LinkedList<Aula> getAulas(){
         return new LinkedList<>(this.aulas);
     }
