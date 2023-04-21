@@ -1,23 +1,26 @@
 package modelo;
 
-public class Identificador {
+public abstract class Identificador {
     protected String nome;
     protected long numero;
 
-    public Identificador(String nome, long numero){
+
+    public Identificador(String nome, long numero) {
         this.nome=nome;
         this.numero=numero;
     }
 
-    public String getNome(){
-        return this.nome;
+    public String getNome() {
+        return (this.nome);
     }
 
-    public long getNumero(){
-        return this.numero;
+    public long getNumero() {
+        return (this.numero);
     }
 
-    public void setNumero(long numero){
-        this.numero=numero;
+    public void setNumero(long numero) {
+        this.numero = numero;
     }
+
+
 }

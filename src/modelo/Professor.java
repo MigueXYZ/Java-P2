@@ -1,88 +1,42 @@
 package modelo;
 
-
 import java.util.LinkedList;
-public class Professor extends Identificador {
-    private final LinkedList<Aula> aulas;
 
-    public Professor(String nome, long numero){
-        super(nome,numero);
-        aulas=new LinkedList<>();
+public class Professor extends Pessoa {
+    private GabineteProfessor gabineteProfessor;
+    private LinkedList<Horario> horarios;
+    public Professor(String nome, long numero, GabineteProfessor gabineteProfessor) {
+        super(nome, numero);
+        this.gabineteProfessor=gabineteProfessor;
     }
-    public void preencherSumario(Aula aula){
-        //ignora caso n conheça a aula
-        if(!aulas.contains(aula)){
-            return;
-        }
-        //adiciono linha ao sumário da aula com nome da aula
-        //adiciono linha ao sumário da aula com número da aula
-        //adiciono linha ao sumãrio da aula com o meu nome(assinar)
-        //peço a cada aluno da aula que preencha o  seu sumário
+
+    @Override
+    protected void associar(Aula aula) {
+        aula.setProfessor(this);
+    }
+
+    @Override
+    protected void escreverSumario(Aula aula) {
         aula.adicionarLinhaSumario(aula.getNome());
         aula.adicionarLinhaSumario(String.valueOf(aula.getNumero()));
-        aula.adicionarLinhaSumario(nome);
+        assinarSumario(aula);
         for (Aluno aluno : aula.getAlunos()) {
             aluno.preencherSumario(aula);
         }
     }
-    public void adicionar(Aula aula){
-        //se a aula for nula ou já existir então ignora
-        if(aula==null||aulas.contains(aula)){
-            return;
-        }
-        aulas.add(aula);
-        aula.setProfessor(this);
-    }
 
-    public long getNumero(){
-        return (this.numero);
-    }
 
-    public void setNumero(long numero){
-        this.numero=numero;
-    }
-
-    public void remover(Aula aula){
-        //caso não consiga remover
-        if(!aulas.remove(aula)){
-            return;
-        }
+    @Override
+    protected void desassociar(Aula aula) {
         aula.desassociarProfessor();
     }
 
-    public String getNome(){
-        return(this.nome);
+    public GabineteProfessor getGabineteProfessor(){
+        return this.gabineteProfessor;
     }
-
-    public LinkedList<Aula> getAulas(){
-        return(this.getAulas(null));
+    public LinkedList<Horario> getHorarios(){
+        return new LinkedList<>(this.horarios);
     }
-    public LinkedList<Aula> getAulas(Horario horario){
-        LinkedList<Aula> aulasADevolver=new LinkedList<>();
-        Horario aux;
-        long inicAula;
-        long fimAula;
-        long inicHor;
-        long fimHor;
-        for (Aula aula : aulas) {
-            //percorrer cada aula deste prof
-            //se o horario intersetar
-            //adiciona
-            if(horario!=null){
-                fimHor=horario.getHoraInicio()+horario.getDuracao();
-                inicHor=horario.getHoraInicio();
-                aux=aula.getHorario();
-                if(aux.getDiaSemana()==horario.getDiaSemana()){
-                    fimAula=aux.getHoraInicio()+aux.getDuracao();
-                    inicAula=aux.getHoraInicio();
-                    if(!(fimHor < inicAula || fimAula < inicHor)){
-                        aulasADevolver.add(aula);
-                    }
-                }
-            }else{
-                aulasADevolver.add(aula);
-            }
-        }
-        return(aulasADevolver);
+    public void removerGabinete(GabineteProfessor gabineteProfessor) {
     }
 }

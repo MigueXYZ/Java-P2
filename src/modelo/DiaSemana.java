@@ -8,14 +8,15 @@ public enum DiaSemana {
         QUINTA_FEIRA("5ª Feira"),
         SEXTA_FEIRA("6ª Feira"),
         SABADO("Sábado");
-        private final String descricao;
-        DiaSemana(String descricao){
-            this.descricao=descricao;
+        private String descricao;
+
+        DiaSemana(String descricao) {
+                this.descricao = descricao;
         }
 
         @Override
         public String toString() {
-            return this.descricao;
+                return this.descricao;
         }
 
 }
