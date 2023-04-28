@@ -2,35 +2,23 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class GabineteSeguranca {
-    private String nome;
+public class GabineteSeguranca extends Divisao{
+
     private LinkedList<Seguranca> segurancas;
-    private Boolean portaAberta;
+
 
     GabineteSeguranca(String nome, Boolean portaAberta){
-        this.nome=nome;
-        this.portaAberta=portaAberta;
+        super(nome,portaAberta);
     }
 
-    public String getNome(){
-        return(this.nome);
-    }
 
-    public Boolean isPortaAberta(){
-        return(this.portaAberta);
-    }
+
 
     public LinkedList<Seguranca> getSegurancas(){
         return new LinkedList<>(this.segurancas);
     }
 
-    public void abrir(){
-        this.portaAberta=true;
-    }
 
-    public void fechar(){
-        this.portaAberta=false;
-    }
 
     public void adicionarSeguranca(Seguranca seguranca){
         if(seguranca==null || this.segurancas.contains(seguranca)){

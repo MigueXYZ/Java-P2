@@ -53,6 +53,9 @@ public class Aula extends Identificador {
         this.professor.adicionar(this);
     }
 
+    public Sala getSala(){
+        return this.sala;
+    }
     public void desassociarProfessor() {
         if (this.professor == null) {
             return;

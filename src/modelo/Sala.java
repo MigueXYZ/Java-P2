@@ -2,20 +2,13 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Sala {
-    private String nome;
+public class Sala extends Divisao {
+
     private LinkedList<Aula> aulas;
-    private Boolean portaAberta;
 
     Sala(String nome,Boolean portaAberta){
-        this.nome=nome;
-        this.portaAberta=portaAberta;
+        super(nome,portaAberta);
     }
-
-    public String getNome(){
-        return(this.nome);
-    }
-
 
     public LinkedList<Aula> getAulas(){
         return new LinkedList<>(this.aulas);
@@ -34,16 +27,6 @@ public class Sala {
         return aulasADevolver;
     }
 
-    public boolean isPortaAberta(){
-        return portaAberta;
-    }
-
-    public void abrir(){
-        portaAberta=true;
-    }
-    public void fechar(){
-        portaAberta=false;
-    }
 
     public void adicionar(Aula aula) {
         if (aula == null || aulas.contains(aula)) {
