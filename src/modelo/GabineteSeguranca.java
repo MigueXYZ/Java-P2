@@ -11,14 +11,9 @@ public class GabineteSeguranca extends Divisao{
         super(nome,portaAberta);
     }
 
-
-
-
     public LinkedList<Seguranca> getSegurancas(){
         return new LinkedList<>(this.segurancas);
     }
-
-
 
     public void adicionarSeguranca(Seguranca seguranca){
         if(seguranca==null || this.segurancas.contains(seguranca)){

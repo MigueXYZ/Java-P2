@@ -7,14 +7,12 @@ public class GabineteProfessor extends Divisao{
 
     GabineteProfessor(String nome,Boolean portaAberta){
         super(nome, portaAberta);
+        professores = new LinkedList<>();
     }
 
     public LinkedList<Professor> getProfessores(){
         return new LinkedList<>(this.professores);
     }
-
-
-
 
     public void remover(Professor professor) {
         if (this.professores != null && professor != null) {
@@ -33,7 +31,6 @@ public class GabineteProfessor extends Divisao{
             professor.setGabinete(this);
         }
     }
-
     public void desassociar(Professor professor) {
         this.professores.remove(professor);
     }

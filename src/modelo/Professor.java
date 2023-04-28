@@ -41,10 +41,6 @@ public class Professor extends PessoaComAulas {
 
     public void removerGabinete(GabineteProfessor gabineteProfessor) {
         this.gabineteProfessor=null;
-        desassociarGabinete(gabineteProfessor);
-    }
-
-    private void desassociarGabinete(GabineteProfessor gabineteProfessor) {
         gabineteProfessor.desassociar(this);
     }
 

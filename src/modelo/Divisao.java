@@ -1,11 +1,10 @@
 package modelo;
 
-public abstract class Divisao {
-    private String nome;
+public abstract class Divisao extends Descritor{
     private Boolean portaAberta;
 
     Divisao(String nome, Boolean portaAberta){
-        this.nome=nome;
+        super(nome);
         this.portaAberta=portaAberta;
     }
 
@@ -19,9 +18,5 @@ public abstract class Divisao {
 
     public Boolean isPortaAberta(){
         return(this.portaAberta);
-    }
-
-    public String getNome(){
-        return(this.nome);
     }
 }
